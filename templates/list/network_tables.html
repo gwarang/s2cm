@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block contents %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">NETWORK</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Network list</h6>
+            <a href="create/" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-flag"></i>
+                </span>
+                <span class="text">Create New Network</span>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>NETWORK ID</th>
+                            <th>NAME</th>
+			    <th>DRIVER</th>
+			    <th>SCOPE</th>
+			    <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>NETWORK ID</th>
+                            <th>NAME</th>
+			    <th>DRIVER</th>
+			    <th>SCOPE</th>
+			    <th>DELETE</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for network in networks %}
+                        <tr>
+                            <td>{{ network.0 }}</td>
+                            <td><a href="{{ network.1 }}/">{{ network.1 }}</a></td>
+			    <td>{{ network.2 }}</td>
+			    <td>{{ network.3 }}</td>
+                            <td>
+                                <a href="remove/{{ network.1 }}/" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

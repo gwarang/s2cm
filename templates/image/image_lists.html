@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block contents %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">IMAGE</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Image list</h6>
+	    <a href="create/" class="btn btn-primary btn-icon-split">
+		    <span class="icon text-white-50">
+			    <i class="fas fa-flag"></i>
+		    </span>
+		    <span class="text">Create New Image</span>
+	    </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>REPOSITOY</th>
+                            <th>TAG</th>
+                            <th>IMAGE ID</th>
+                            <th>CREATED</th>
+			    <th>SIZE</th>
+			    <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>REPOSITOY</th>
+                            <th>TAG</th>
+                            <th>IMAGE ID</th>
+                            <th>CREATED</th>
+			    <th>SIZE</th>
+			    <th>DELETE</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+			{% for info in infos %}
+                        <tr>
+				<td><a href="{{ info.0 }}/{{info.1}}" >
+						{% autoescape off %}
+						{{ info.0 }}</a>
+					{% endautoescape %}
+				</td>
+				<td>{{ info.1 }}</td>
+				<td>{{ info.2 }}</td>
+				<td>{{ info.3 }}</td>
+				<td>{{ info.4 }}</td>
+                            <td>
+				    <a href="remove/{{ info.0 }}/{{ info.1 }}/" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Delete</span>
+                                </a>
+                            </td>
+                        </tr>
+			{% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+

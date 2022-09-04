@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block contents %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">CREATE VOLUME</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10">
+            <!-- Basic Card Example -->
+            <div class="card shadow mb-10">
+                <div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary"> Create volume </h6>
+                </div>
+                <div class="card-body">
+			<form action="" method=POST>
+				
+				    <form action="" class="user" method=POST>
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input name="volume_name" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter new volume name">
+                                        </div>
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Update">
+                                    </form>
+
+			</form>
+		</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+
+<!--
+<form action="" method="post">
+        {% csrf_token %}
+        {{ createForm }}
+        <input type="submit" value="OK">
+</form>
+-->

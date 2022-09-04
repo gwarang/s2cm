@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block contents %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">SERVICES</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Service list</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>MODE</th>
+                            <th>REPLICAS</th>
+                            <th>PORTS</th>
+                            <th>DELETE</th>
+			    <th>UPDATE</th>
+			    <th>ROLLBACK</th>
+			    <th>SCALE</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>MODE</th>
+                            <th>REPLICAS</th>
+                            <th>PORTS</th>
+                            <th>DELETE</th>
+			    <th>UPDATE</th>
+			    <th>ROLLBACK</th>
+			    <th>SCALE</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for service in services %}
+                        <tr>
+                            <td>{{ service.0 }}</td>
+                            <td><a href="{{ service.1 }}/">{{ service.1 }}</a></td>
+                            <td>{{ service.2 }}</td>
+                            <td>{{ service.3 }}</td>
+                            <td>{{ service.4 }}</td>
+                            <td>{{ service.5 }}</td>
+                            <td>
+				    <a href="update/{{ service.1 }}" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Update</span>
+                                </a>
+                            </td>
+                            <td>
+				    <a href="rollback/{{ service.1 }}" class="btn btn-secondary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <span class="text">Rollback</span>
+                                </a>
+                            </td>
+                            <td>
+			        <form action="scale/">
+                                    <input name="scale_num" class="form-control form-control-user" placeholder="# of stacks">
+				    <input type=hidden value={{ service.1 }} name=service_name >
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <span class="text">
+				        <input text="Change Scale"  type="submit">
+				    </span>
+				    </input>
+				</form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
